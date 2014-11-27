@@ -236,6 +236,7 @@
 @synthesize debugTiles = _debugTiles;
 @synthesize hideAttribution = _hideAttribution;
 @synthesize showLogoBug = _showLogoBug;
+@synthesize mapScrollView = _mapScrollView;
 
 #pragma mark -
 #pragma mark Initialization

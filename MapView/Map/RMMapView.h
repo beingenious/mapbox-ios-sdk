@@ -136,6 +136,8 @@ typedef enum : NSUInteger {
 /** A Boolean value indicating whether to show a small logo in the corner of the map view. Defaults to `YES`. */
 @property (nonatomic, assign) BOOL showLogoBug;
 
+@property (nonatomic, strong) RMMapScrollView *mapScrollView;
+
 #pragma mark - Initializers
 
 /** @name Initializing a Map View */
