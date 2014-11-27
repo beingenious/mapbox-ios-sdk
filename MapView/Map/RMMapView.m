@@ -564,7 +564,7 @@
         }
     }
 
-    if (_logoBug)
+    if (_logoBug && NO)
     {
         if ( ! [[viewController.view valueForKeyPath:@"constraints.firstItem"]  containsObject:_logoBug] &&
              ! [[viewController.view valueForKeyPath:@"constraints.secondItem"] containsObject:_logoBug])
