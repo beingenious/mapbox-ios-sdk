@@ -98,6 +98,10 @@
     short zoom    = log2(bounds.size.width / rect.size.width);
 
 //    NSLog(@"drawLayer: {{%f,%f},{%f,%f}}", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    
+    if (rect.size.width == 0 || rect.size.height == 0 || !(zoom >= _tileSource.minZoom && zoom <= _tileSource.maxZoom)) {
+        return ;
+    }
 
     if (self.useSnapshotRenderer)
     {

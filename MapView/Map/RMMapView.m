@@ -812,8 +812,8 @@
 
 - (RMProjectedRect)fitProjectedRect:(RMProjectedRect)rect1 intoRect:(RMProjectedRect)rect2
 {
-    if (rect1.size.width > rect2.size.width || rect1.size.height > rect2.size.height)
-        return rect2;
+//    if (rect1.size.width > rect2.size.width || rect1.size.height > rect2.size.height)
+//        return rect2;
 
     RMProjectedRect fittedRect = RMProjectedRectMake(0.0, 0.0, rect1.size.width, rect1.size.height);
 
