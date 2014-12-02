@@ -265,7 +265,8 @@
     _mapScrollView = nil;
     _overlayView = nil;
 
-    _screenScale = [UIScreen mainScreen].scale;
+//    _screenScale = [UIScreen mainScreen].scale;
+    _screenScale = 1.0;
 
     _adjustTilesForRetinaDisplay = NO;
     _missingTilesDepth = 1;
