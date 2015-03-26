@@ -539,7 +539,7 @@
 
     // compass
     //
-    if (RMPostVersion7 && _compassButton)
+    if (RMPostVersion7 && _compassButton && NO)
     {
         // The compass view has an intermediary container superview due to
         // jitter caused by constraint math updates during its rotation
