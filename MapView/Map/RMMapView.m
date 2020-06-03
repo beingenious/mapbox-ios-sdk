@@ -51,8 +51,6 @@
 #import "RMUserLocation.h"
 #import "RMUserTrackingBarButtonItem.h"
 
-#import "RMAttributionViewController.h"
-
 #import "SMCalloutView.h"
 
 #pragma mark --- begin constants ----
@@ -3900,51 +3898,51 @@
 
 - (void)showAttribution:(id)sender
 {
-    if (_viewControllerPresentingAttribution)
-    {
-        RMAttributionViewController *attributionViewController = [[RMAttributionViewController alloc] initWithMapView:self];
-
-        if (RMPostVersion7)
-        {
-            attributionViewController.view.tintColor = self.tintColor;
-            attributionViewController.edgesForExtendedLayout = UIRectEdgeNone;
-
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-            {
-                // show popover
-                //
-                _attributionPopover = [[UIPopoverController alloc] initWithContentViewController:attributionViewController];
-                _attributionPopover.backgroundColor = [UIColor whiteColor];
-                _attributionPopover.popoverContentSize = CGSizeMake(320, 320);
-                _attributionPopover.delegate = self;
-                [_attributionPopover presentPopoverFromRect:_attributionButton.frame
-                                                     inView:self
-                                   permittedArrowDirections:UIPopoverArrowDirectionDown
-                                                   animated:NO];
-            }
-            else
-            {
-                // slide up see-through modal
-                //
-                attributionViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                                                            target:self
-                                                                                                                            action:@selector(dismissAttribution:)];
-
-                UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:attributionViewController];
-                wrapper.navigationBar.tintColor = self.tintColor;
-                wrapper.modalPresentationStyle = UIModalPresentationCustom;
-                wrapper.transitioningDelegate = self;
-                [_viewControllerPresentingAttribution presentViewController:wrapper animated:YES completion:nil];
-            }
-        }
-        else
-        {
-            // page curl reveal behind map
-            //
-            attributionViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-            [_viewControllerPresentingAttribution presentViewController:attributionViewController animated:YES completion:nil];
-        }
-    }
+//    if (_viewControllerPresentingAttribution)
+//    {
+//        RMAttributionViewController *attributionViewController = [[RMAttributionViewController alloc] initWithMapView:self];
+//
+//        if (RMPostVersion7)
+//        {
+//            attributionViewController.view.tintColor = self.tintColor;
+//            attributionViewController.edgesForExtendedLayout = UIRectEdgeNone;
+//
+//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+//            {
+//                // show popover
+//                //
+//                _attributionPopover = [[UIPopoverController alloc] initWithContentViewController:attributionViewController];
+//                _attributionPopover.backgroundColor = [UIColor whiteColor];
+//                _attributionPopover.popoverContentSize = CGSizeMake(320, 320);
+//                _attributionPopover.delegate = self;
+//                [_attributionPopover presentPopoverFromRect:_attributionButton.frame
+//                                                     inView:self
+//                                   permittedArrowDirections:UIPopoverArrowDirectionDown
+//                                                   animated:NO];
+//            }
+//            else
+//            {
+//                // slide up see-through modal
+//                //
+//                attributionViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                                                                                                            target:self
+//                                                                                                                            action:@selector(dismissAttribution:)];
+//
+//                UINavigationController *wrapper = [[UINavigationController alloc] initWithRootViewController:attributionViewController];
+//                wrapper.navigationBar.tintColor = self.tintColor;
+//                wrapper.modalPresentationStyle = UIModalPresentationCustom;
+//                wrapper.transitioningDelegate = self;
+//                [_viewControllerPresentingAttribution presentViewController:wrapper animated:YES completion:nil];
+//            }
+//        }
+//        else
+//        {
+//            // page curl reveal behind map
+//            //
+//            attributionViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+//            [_viewControllerPresentingAttribution presentViewController:attributionViewController animated:YES completion:nil];
+//        }
+//    }
 }
 
 - (void)dismissAttribution:(id)sender
@@ -4000,23 +3998,23 @@
 
     BOOL isPresentation;
 
-    if ([[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey] isKindOfClass:[UINavigationController class]] &&
-        [[(UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey] topViewController] isKindOfClass:[RMAttributionViewController class]])
-    {
-        isPresentation = YES;
-
-        [inView addSubview:toView];
-
-        toView.bounds = fromView.bounds;
-
-        toView.center = offScreenCenter;
-    }
-    else
-    {
+//    if ([[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey] isKindOfClass:[UINavigationController class]] &&
+//        [[(UINavigationController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey] topViewController] isKindOfClass:[RMAttributionViewController class]])
+//    {
+//        isPresentation = YES;
+//
+//        [inView addSubview:toView];
+//
+//        toView.bounds = fromView.bounds;
+//
+//        toView.center = offScreenCenter;
+//    }
+//    else
+//    {
         isPresentation = NO;
 
         fromView.center = onScreenCenter;
-    }
+//    }
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0
